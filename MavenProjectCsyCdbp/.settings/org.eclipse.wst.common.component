@@ -6,6 +6,24 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/udf"/>
+        <dependent-module archiveName="MavenProjectCsyCdbp.war" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenIotBase/MavenIotBase">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MavenProjectCsyCdbp.war" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenAgvSeer/MavenAgvSeer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MavenBasicUtil.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenBasicUtil/MavenBasicUtil">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MavenProjectCsyCdbp.war" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenWmsBase/MavenWmsBase">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MavenTest.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenTest/MavenTest">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MavenProjectCsyCdbp.war" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenIotAcs/MavenIotAcs">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/MavenProjectCsyCdbp/target/classes"/>
         <property name="context-root" value="/"/>
     </wb-module>
