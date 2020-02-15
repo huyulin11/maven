@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifantech.mappings.ImmediateTaskMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
+		/> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	<!-- 以下与实体类的中字段一致 -->
+
+	<select id="findByPage" resultType="com.kaifantech.entity.ImmediateTaskFormMap">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_TASK}
+		where opflag = 'NEW'
+		order by agvId,FIELD(tasktype ,'GOTO_CHARGE','BACK_CHARGE') DESC, 0+JSON_VALUE(json,'$.seq') desc, time
+	</select>
+	
+	<select id="editEntity" resultType="com.kaifantech.entity.ImmediateTaskFormMap">
+		update ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_TASK}
+		set json = (CASE WHEN json IS NULL OR json=''  
+		THEN JSON_object('seq', #{json}) ELSE 
+		JSON_SET (json, '$.seq', #{json}) END)
+		where taskexesid = #{taskexesid}
+	</select>
+
+</mapper>

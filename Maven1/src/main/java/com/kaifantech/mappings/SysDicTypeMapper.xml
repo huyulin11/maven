@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifantech.mappings.SysDicTypeMapper">
+	<select id="find" resultType="com.kaifantech.entity.SysDicTypeFormMap">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@SYS_DICTIONARY_TYPE_INFO}
+		where delflag = '0'
+		<if test="dictype != null and dictype != ''">
+		and dictype like '%${dictype}%'
+		</if>
+		order by dictype
+	</select>
+
+	<insert id="add">
+		REPLACE into ${@com.kaifantech.init.sys.dao.AppTables@SYS_DICTIONARY_TYPE_INFO}
+		( dictype,
+		remark,
+		json
+		)
+		value
+		(
+		#{dictype},
+		#{remark},
+		#{json}
+		)
+	</insert>
+</mapper>

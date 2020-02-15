@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifantech.mappings.SysDicDataMapper">
+
+	<select id="findPage" resultType="com.kaifantech.entity.SysDicDataFormMap">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@SYS_DICTIONARY_DATA_INFO}
+		where 1 = 1
+		<if test="dictype != null and dictype != ''">
+		and dictype like '%${dictype}%'
+		</if>
+		order by dictype,dickey
+	</select>
+
+	<select id="findByValue" resultType="com.kaifantech.entity.SysDicDataFormMap">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@SYS_DICTIONARY_DATA_INFO}
+		where 1 = 1
+		and dictype = '${dictype}'
+		and dicvalue like '%${dicvalue}%'
+		order by dictype,dickey
+	</select>
+
+	<insert id="add">
+		REPLACE INTO ${@com.kaifantech.init.sys.dao.AppTables@SYS_DICTIONARY_DATA_INFO} (
+		  "dictype",
+		  "dickey",
+		  "dicvalue",
+		  "dicalias",
+		  "json",
+		  "sortflag"
+		) 
+		VALUES
+		  (
+		    '${dictype}',
+		    '${dickey}',
+		    '${dicvalue}',
+		    '${dicalias}',
+		    '${json}',
+		    '${sortflag}'
+		  )
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM ${@com.kaifantech.init.sys.dao.AppTables@SYS_DICTIONARY_DATA_INFO} 
+		 WHERE "dictype"='${dictype}'
+		   AND "dickey"='${dickey}'
+	</delete>
+	
+	<select id="getSysDictionaries" resultType="com.kaifantech.bean.dic.SysDic"  parameterType="com.kaifantech.bean.dic.SysDic" >
+		SELECT
+			dickey "key",
+			dictype "type",
+			dicvalue "value",
+			dicalias "alias",
+			dicvalueus "valueUs",
+			dicdefau "defau",
+			json "json"
+		FROM
+			${@com.kaifantech.init.sys.dao.AppTables@SYS_DICTIONARY_DATA_INFO}
+	   WHERE 1=1
+	     AND delflag='0'
+		 AND dictype = #{type}
+		<if test="key != null and key != ''" >
+		 AND dickey = #{key}
+      	</if>
+		<if test="value != null and value != ''" >
+		 AND dicvalue = #{value}
+      	</if>
+		<if test="isNormalUser != null and isNormalUser != '' and isNormalUser == 'true'" >
+		 AND dicnormaluser = "1"
+      	</if>
+       ORDER BY sortflag
+	</select>
+	
+	<select id="getAllDictionaries" resultType="com.kaifantech.bean.dic.SysDic"  parameterType="com.kaifantech.bean.dic.SysDic" >
+		SELECT
+			dickey "key",
+			dictype "type",
+			dicvalue "value",
+			dicalias "alias",
+			dicvalueus "valueUs",
+			dicdefau "defau",
+			json "json"
+		FROM
+			${@com.kaifantech.init.sys.dao.AppTables@SYS_DICTIONARY_DATA_INFO}
+	   WHERE 1=1
+	     AND delflag='0'
+	   <if test="dictype != null and dictype != ''" >
+		 AND dictype = #{dictype}
+      	</if>
+       ORDER BY dictype,sortflag,dickey
+	</select>
+	
+</mapper>

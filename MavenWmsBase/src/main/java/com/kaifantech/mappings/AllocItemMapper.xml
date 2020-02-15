@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifantech.mappings.AllocItemMapper">
+	<select id="findPage" resultType="com.kaifantech.entity.AllocItemFormMap">
+		SELECT 
+		  a.*,
+		  b.sitename
+		FROM
+		  ${@com.kaifantech.init.sys.dao.AppTables@ALLOCATION_ITEM_INFO} a 
+		  LEFT JOIN ${@com.kaifantech.init.sys.dao.AppTables@TASK_SITE_INFO} b 
+		    ON a.siteid = b.id 
+		WHERE 1 = 1 
+		<if test="text != null and text != ''">
+		and text like '${text}%'
+		</if>
+		<if test="inStock != null and inStock != '' and inStock == 'true'">
+		and (num > 0 or status != 1) 
+		</if>
+		<if test="whid != null and whid != ''">
+		and whid = '${whid}'
+		</if>
+		<if test="delflag != null and delflag != ''">
+		and a.delflag = '${delflag}'
+		</if>
+		order by a.id
+	</select>
+
+	<select id="findWithTxm" resultType="com.kaifantech.entity.AllocItemFormMap">
+		SELECT 
+		  a.*,
+		  b.txm,b.num txmnum
+		FROM
+		  ${@com.kaifantech.init.sys.dao.AppTables@ALLOCATION_ITEM_INFO} a 
+		  LEFT JOIN ${@com.kaifantech.init.sys.dao.AppTables@ALLOC_TXM_INFO} b 
+		    ON a.text = b.alloc 
+		WHERE 1 = 1 
+		<if test="text != null and text != ''">
+		and text like '${text}%'
+		</if>
+		<if test="inStock != null and inStock != '' and inStock == 'true'">
+		and (a.num > 0 or status != 1) 
+		</if>
+		and a.delflag = '0'
+		order by a.id
+	</select>
+
+	<select id="findFirstPage" resultType="com.kaifantech.entity.AllocItemFormMap">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@ALLOCATION_ITEM_INFO}
+		where 1 = 1
+		and delflag = 0
+		<if test="text != null and text != ''">
+		and text like '%${text}%'
+		</if>
+		order by a.id
+	</select>
+</mapper>

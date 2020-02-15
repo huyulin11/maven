@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifantech.mappings.AppBaseMapper">
+	<select id="findByWhere" resultType="java.util.HashMap" flushCache="true" useCache="false">
+		select * from table
+		
+	</select>
+	
+	<select id="findByAll" resultType="java.util.HashMap">
+		select * from table
+	</select>
+
+	<select id="findByPage" resultType="java.util.HashMap">
+		select * from table
+	</select>
+
+	<insert id="addEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into (fleids) values (values)
+	</insert>
+	
+	<insert id="batchSave">
+		insert into (fleids) values (values),(values),(values)
+	</insert>
+	
+	<insert id="batchInsert">
+		insert into (fleids) values (values),(values),(values)
+	</insert>
+
+	<update id="editEntity">
+		update table set (${fleids}) where id = (${id})
+	</update>
+	
+	<delete id="deleteByNames">
+		delete from table where id in (${ids})
+	</delete>
+
+	<select id="findByNames" resultType="java.util.HashMap" flushCache="true" useCache="false">
+		select * from table where id
+		in ()
+	</select>
+
+	<select id="findByAttribute" resultType="java.util.HashMap">
+		select * from table
+		where id in ()
+	</select>
+	
+	<delete id="deleteByAttribute">
+		delete from table where id in ()
+	</delete>
+
+	<update id="deleteByLogic">
+		update table set delflag=1 where id in ()
+	</update>
+
+	<update id="deleteBySub">
+		update table set delflag=1 where id in ()
+	</update>
+	
+	<update id="deleteBySure">
+		update table set delflag=1 where id in ()
+	</update>
+	
+	<update id="updateStatus">
+		update table set delflag=1 where id in ()
+	</update>
+	
+	<select id="findbyFrist" resultType="java.util.HashMap">
+		select * from table where id=()
+	</select>
+	
+	<select id="findOne" resultType="java.util.HashMap">
+		select * from table where id=()
+	</select>
+	
+	<update id="truncate">
+		TRUNCATE table table 
+	</update>
+</mapper>

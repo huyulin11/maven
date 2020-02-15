@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifantech.mappings.TaskSiteDevMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
+		/> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	<!-- 以下与实体类的中字段一致 -->
+
+	<select id="find" resultType="com.kaifantech.entity.TaskSiteDevFormMap">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@TASK_SITE_DEV}
+		where 1 = 1
+		and delflag = 0
+		<if test="siteid != null and siteid != ''">
+		and siteid = '${siteid}'
+		</if>
+		<if test="devid != null and devid != ''">
+		and devid = '${devid}'
+		</if>
+		order by siteid 
+	</select>
+
+	<select id="findAll" resultType="com.kaifantech.bean.tasksite.TaskSiteDevBean">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@TASK_SITE_DEV}
+		where 1 = 1
+		and delflag = 0
+	</select>
+
+	<insert id="add">
+		insert into ${@com.kaifantech.init.sys.dao.AppTables@TASK_SITE_DEV}
+		( 
+		siteid,
+		devid
+		)
+		value
+		(
+		#{siteid},
+		#{devid}
+		)
+	</insert>
+</mapper>

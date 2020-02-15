@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifantech.mappings.taskexe.TaskexeDetailJobsMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
+		/> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	<!-- 以下与实体类的中字段一致 -->
+
+	<select id="find" resultType="com.kaifantech.bean.taskexe.TaskexeDetailBean">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_JOBS}
+		where 1 = 1
+		and delflag = 0
+		and taskexesid = '${taskexesid}'
+		<if test="siteid != null and siteid != ''">
+			and siteid = '${siteid}'
+		</if>
+		<if test="tasksequence != null and tasksequence != ''">
+			and tasksequence = '${tasksequence}'
+		</if>
+		order by tasksequence,detailsequence
+	</select>
+
+	<select id="findNew" resultType="com.kaifantech.bean.taskexe.TaskexeDetailBean">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_JOBS}
+		where 1 = 1
+		and delflag = 0
+		and taskexesid = '${taskexesid}'
+		and opflag != 'OVER'
+		<if test="siteid != null and siteid != ''">
+			and siteid = '${siteid}'
+		</if>
+		<if test="tasksequence != null and tasksequence != ''">
+			and tasksequence = '${tasksequence}'
+		</if>
+		order by tasksequence,detailsequence
+	</select>
+
+	<insert id="add">
+		insert into ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_JOBS}
+		( 
+		taskexesid,
+		siteid,
+		sitecode,
+		tasksequence,
+		detailsequence,
+		arrivedact,
+		addedinfo,
+		addeddesc,
+		distancetozero
+		)
+		value
+		(
+		#{taskexesid},
+		#{siteid},
+		#{sitecode},
+		#{tasksequence},
+		#{detailsequence},
+		#{arrivedact},
+		#{addedinfo},
+		#{addeddesc},
+		#{distancetozero}
+		)
+	</insert>
+
+	<update id="updateOpflag">
+		update ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_JOBS} 
+		set opflag= #{opflag}
+		where taskexesid=#{taskexesid} and detailsequence=#{detailsequence} and tasksequence=#{tasksequence}
+	</update>
+	
+	<update id="updateAllOpflag">
+		update ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_JOBS}
+		set opflag= #{opflag}
+		where taskexesid=#{taskexesid}
+	</update>
+	
+	<update id="updatDetailsequence">
+		update ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_JOBS} 
+		set detailsequence= #{detailsequence}
+		where taskexesid=#{taskexesid} and id=#{id} and tasksequence=#{tasksequence}
+	</update>
+	
+	<delete id="delete">
+		delete from ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_JOBS}
+		where taskexesid = '${taskexesid}'
+		and tasksequence = '${tasksequence}'
+	</delete>
+</mapper>

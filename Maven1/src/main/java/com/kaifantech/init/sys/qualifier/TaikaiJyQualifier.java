@@ -1,0 +1,27 @@
+package com.kaifantech.init.sys.qualifier;
+
+import com.kaifantech.init.sys.ServicePrefix;
+
+public class TaikaiJyQualifier extends FancyQualifier {
+	public static final String DEFAULT_SERVICE_PREFIX = ServicePrefix.TAIKAI;
+
+	public static final String TASKEXE_MODULE = DEFAULT_SERVICE_PREFIX + "TaskexeModule";
+	public static final String CTRL_MODULE = DEFAULT_SERVICE_PREFIX + "CtrlModule";
+	public static final String AGV_SERVER_WORKER = DEFAULT_SERVICE_PREFIX + "AgvServerWorker";
+
+	public static final String AGV_CLIENT_WORKER = DEFAULT_SERVICE_PREFIX + "AgvClientWorker";
+	public static final String AUTO_DOOR_CLIENT_WORKER = DEFAULT_SERVICE_PREFIX + "AutoDoorClientWorker";
+	public static final String LIFT_CLIENT_WORKER = DEFAULT_SERVICE_PREFIX + "LiftClientWorker";
+	public static final String LIGHT_CLIENT_WORKER = DEFAULT_SERVICE_PREFIX + "LightClientWorker";
+
+	public static final String DISTRIBUTION_CLIENT_WORKER = DEFAULT_SERVICE_PREFIX + "DistributionClientWorker";
+
+	public static final String IOT_CLIENT_SERVICE = DEFAULT_SERVICE_PREFIX + "IotClientService";
+
+	public static final String TASKEXE_DETAIL_JOBS_SERVICE = DEFAULT_SERVICE_PREFIX + "TaskexeDetailJobsService";
+
+	public static final String FETCH_OP_SERVICE = DEFAULT_SERVICE_PREFIX + "TaskexeFetchDealer";
+	public static final String DELIVER_OP_SERVICE = DEFAULT_SERVICE_PREFIX + "TaskexeDeliverDealer";
+
+	public static final String CURRENT_PLACE_SERVICE = DEFAULT_SERVICE_PREFIX + "CurrentPlaceService";
+}

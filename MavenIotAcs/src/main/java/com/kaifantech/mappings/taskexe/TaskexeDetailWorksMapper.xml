@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifantech.mappings.taskexe.TaskexeDetailWorksMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
+		/> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	<!-- 以下与实体类的中字段一致 -->
+
+	<select id="find" resultType="com.kaifantech.bean.taskexe.TaskexeDetailWorksBean">
+		select *
+		from ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_WORKS}
+		where 1 = 1
+		and delflag = 0
+		and taskexesid = '${taskexesid}'
+		<if test="siteid != null and siteid != ''">
+			and siteid = '${siteid}'
+		</if>
+		<if test="detailsequence != null and detailsequence != ''">
+			and detailsequence = '${detailsequence}'
+		</if>
+		<if test="tasksequence != null and tasksequence != ''">
+			and tasksequence = '${tasksequence}'
+		</if>
+		order by tasksequence,detailsequence,worksequence
+	</select>
+
+	<insert id="add">
+		insert into ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_WORKS}
+		( 
+		taskexesid,
+		siteid,
+		sitecode,
+		detailsequence,
+		worksequence,
+		tasksequence,
+		arrivedact,
+		addedinfo
+		)
+		value
+		(
+		#{taskexesid},
+		#{siteid},
+		#{sitecode},
+		#{detailsequence},
+		#{worksequence},
+		#{tasksequence},
+		#{arrivedact},
+		#{addedinfo}
+		)
+	</insert>
+
+	<update id="updateOpflag">
+		update ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_WORKS}
+		set opflag= #{opflag}
+		where taskexesid=#{taskexesid} and detailsequence=#{detailsequence} and worksequence=#{worksequence} and tasksequence=#{tasksequence}
+	</update>
+	
+	<update id="updateAllOpflag">
+		update ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_WORKS}
+		set opflag= #{opflag}
+		where taskexesid=#{taskexesid}
+	</update>
+	
+	<update id="updatAddedinfo">
+		update ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_WORKS}
+		set addedinfo= #{addedinfo}
+		where taskexesid=#{taskexesid} and detailsequence=#{detailsequence} and worksequence=#{worksequence} and tasksequence=#{tasksequence}
+	</update>
+	
+	<delete id="delete">
+		delete from ${@com.kaifantech.init.sys.dao.AppTables@TASKEXE_S2C_DETAIL_WORKS}
+		where taskexesid = '${taskexesid}'
+		and tasksequence = '${tasksequence}'
+	</delete>
+</mapper>

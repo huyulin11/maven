@@ -1,0 +1,38 @@
+package com.calculatedfun.dao;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+import com.calculatedfun.dto.SysCity;
+import com.calculatedfun.dto.SysCityExample;
+import com.calculatedfun.dto.SysCityWithBLOBs;
+
+public interface SysCityMapper {
+    int countByExample(SysCityExample example);
+
+    int deleteByExample(SysCityExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(SysCityWithBLOBs record);
+
+    int insertSelective(SysCityWithBLOBs record);
+
+    List<SysCityWithBLOBs> selectByExampleWithBLOBs(SysCityExample example);
+
+    List<SysCity> selectByExample(SysCityExample example);
+
+    SysCityWithBLOBs selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") SysCityWithBLOBs record, @Param("example") SysCityExample example);
+
+    int updateByExampleWithBLOBs(@Param("record") SysCityWithBLOBs record, @Param("example") SysCityExample example);
+
+    int updateByExample(@Param("record") SysCity record, @Param("example") SysCityExample example);
+
+    int updateByPrimaryKeySelective(SysCityWithBLOBs record);
+
+    int updateByPrimaryKeyWithBLOBs(SysCityWithBLOBs record);
+
+    int updateByPrimaryKey(SysCity record);
+}
