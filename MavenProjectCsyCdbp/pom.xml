@@ -2,14 +2,27 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.calculatedfun.maven</groupId>
-	<artifactId>MavenWmsBase</artifactId>
+	<artifactId>MavenProjectCsyCdbp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
+	<modules>
+		<module>../MavenBasicUtil</module>
+		<module>../MavenIotAcs</module>
+		<module>../MavenIotBase</module>
+		<module>../MavenWmsBase</module>
+		<module>../MavenAgvSeer</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.calculatedfun.maven</groupId>
-			<artifactId>MavenBasicUtil</artifactId>
+			<artifactId>MavenWmsBase</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.calculatedfun.maven</groupId>
+			<artifactId>MavenAgvSeer</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

@@ -6,14 +6,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>../Maven1</module>
-	</modules>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.calculatedfun.maven</groupId>
-			<artifactId>Maven1</artifactId>
+			<artifactId>MavenBasicUtil</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
