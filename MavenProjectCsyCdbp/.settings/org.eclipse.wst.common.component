@@ -1,29 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="MavenProjectCsyCdbp">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/udf"/>
-        <dependent-module archiveName="MavenProjectCsyCdbp.war" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenIotBase/MavenIotBase">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="MavenProjectCsyCdbp.war" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenAgvSeer/MavenAgvSeer">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="MavenBasicUtil.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenBasicUtil/MavenBasicUtil">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="MavenProjectCsyCdbp.war" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenWmsBase/MavenWmsBase">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="MavenTest.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenTest/MavenTest">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="MavenProjectCsyCdbp.war" deploy-path="/WEB-INF/lib" handle="module:/resource/MavenIotAcs/MavenIotAcs">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/AgvSeer"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/BasicUtil"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/IotBase"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/IotAcs"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/WmsBase"/>
         <property name="java-output-path" value="/MavenProjectCsyCdbp/target/classes"/>
         <property name="context-root" value="/"/>
     </wb-module>

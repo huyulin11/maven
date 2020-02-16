@@ -6,15 +6,30 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>../MavenBasicUtil</module>
-		<module>../MavenIotAcs</module>
-		<module>../MavenIotBase</module>
-		<module>../MavenWmsBase</module>
-		<module>../MavenAgvSeer</module>
-	</modules>
+<!-- 	<modules> -->
+<!-- 		<module>../MavenBasicUtil</module> -->
+<!-- 		<module>../MavenIotAcs</module> -->
+<!-- 		<module>../MavenIotBase</module> -->
+<!-- 		<module>../MavenWmsBase</module> -->
+<!-- 		<module>../MavenAgvSeer</module> -->
+<!-- 	</modules> -->
 
 	<dependencies>
+		<dependency>
+			<groupId>com.calculatedfun.maven</groupId>
+			<artifactId>MavenBasicUtil</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.calculatedfun.maven</groupId>
+			<artifactId>MavenIotAcs</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.calculatedfun.maven</groupId>
+			<artifactId>MavenIotBase</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>com.calculatedfun.maven</groupId>
 			<artifactId>MavenWmsBase</artifactId>

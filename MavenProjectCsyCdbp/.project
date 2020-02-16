@@ -3,12 +3,6 @@
 	<name>MavenProjectCsyCdbp</name>
 	<comment></comment>
 	<projects>
-		<project>MavenIotBase</project>
-		<project>MavenAgvSeer</project>
-		<project>MavenBasicUtil</project>
-		<project>MavenWmsBase</project>
-		<project>MavenTest</project>
-		<project>MavenIotAcs</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -40,4 +34,31 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/AgvSeer</name>
+			<type>2</type>
+			<location>G:/work2018/maven/MavenAgvSeer/src/main/java</location>
+		</link>
+		<link>
+			<name>src/main/BasicUtil</name>
+			<type>2</type>
+			<location>G:/work2018/maven/MavenBasicUtil/src/main/java</location>
+		</link>
+		<link>
+			<name>src/main/IotAcs</name>
+			<type>2</type>
+			<location>G:/work2018/maven/MavenIotAcs/src/main/java</location>
+		</link>
+		<link>
+			<name>src/main/IotBase</name>
+			<type>2</type>
+			<location>G:/work2018/maven/MavenIotBase/src/main/java</location>
+		</link>
+		<link>
+			<name>src/main/WmsBase</name>
+			<type>2</type>
+			<location>G:/work2018/maven/MavenWmsBase/src/main/java</location>
+		</link>
+	</linkedResources>
 </projectDescription>
